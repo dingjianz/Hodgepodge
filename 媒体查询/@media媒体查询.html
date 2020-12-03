@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>媒体查询</title>
+  <style>
+    /* 
+      < 768 黄色 yellow
+      768 ~ 992 绿色 green
+      992 ~ 1200 紫色 purple
+      > 1200 红色 red
+    */
+    /* @media screen and (max-width: 768px) {
+      body {
+        background-color: yellow;
+      }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 992px) {
+      body {
+        background-color: green;
+      }
+    }
+
+    @media screen and (min-width: 992px) and (max-width: 1200px) {
+      body {
+        background-color: purple;
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      body {
+        background-color: red;
+      }
+    } */
+
+    /* max-width 那么就应该从大到小写 */
+    /* body {
+      background-color: red;
+    }
+
+    @media screen and (max-width: 1200px) {
+      body {
+        background-color: purple;
+      }
+    }
+
+    @media screen and (max-width: 992px) {
+      body {
+        background-color: green;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      body {
+        background-color: yellow;
+      }
+    }
+
+    */
+
+    /* min-width 那么就应该从小写到大 */
+    body {
+      background-color: yellow;
+    }
+
+    @media screen and (min-width: 768px) {
+      body {
+        background-color: green;
+      }
+    }
+
+    @media screen and (min-width: 992px) {
+      body {
+        background-color: purple;
+      }
+    }
+
+    @media screen and (min-width: 1200px) {
+      body {
+        background-color: red;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>切换动效</title>
+  <style lang="css">
+    button {
+      cursor: pointer;
+    }
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: skyblue;
+      transition: all 2s;
+    }
+    .box.class1 {
+      background-color: lightcoral;
+      width: 400px;
+      height: 400px;
+    }
+    .box.class2 {
+      background-color: lightgreen;
+      width: 10px;
+      height: 10px;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn">切换</button>
+  <div class="box"></div>
+  <script>
+    window.onload = () => {
+      const $btn = document.getElementsByClassName('btn')[0] // 按钮
+      const $dom = document.getElementsByClassName('box')[0] // div对象
+
+      $btn.onclick = () => {
+        const classList = $dom.classList
+        let arr = [].slice.call(classList)
+        if (arr.includes('class1')) {
+          $dom.classList.replace('class1', 'class2')
+        } else if (arr.includes('class2')) {
+          $dom.classList.replace('class2', 'class1')
+        } else {
+          $dom.classList.add('class1')
+        }
+      }
+    }
+  </script>
+</body>
+</html>

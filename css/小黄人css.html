@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小黄人</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrap {
+      width: 400px;
+      height: 600px;
+      margin: 0 auto;
+      border: 1px solid red;
+      position: relative;
+    }
+
+    .wrap .xhr_body {
+      width: 250px;
+      height: 400px;
+      box-sizing: border-box;
+      border: 5px solid #000;
+      border-radius: 125px;
+      background-color: yellow;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      overflow: hidden;
+    }
+
+    /* 头发 */
+    .wrap .xhr_hair_1,
+    .wrap .xhr_hair_2 {
+      width: 130px;
+      height: 100px;
+      border-top: 10px solid #000;
+      border-radius: 50%;
+      position: absolute;
+      animation: hairAni 5s ease-in infinite alternate;
+    }
+
+    .xhr_hair_1 {
+      left: 100px;
+      top: 80px;
+      transform: rotateZ(48deg);
+    }
+
+    .xhr_hair_2 {
+      left: 102px;
+      top: 70px;
+      transform: rotateZ(48deg);
+    }
+
+    /* 眼睛 */
+    .xhr_eyes {
+      width: 100%;
+      height: 100px;
+      box-sizing: border-box;
+      position: absolute;
+      top: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .xhr_eyes_l, .xhr_eyes_r {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      border: 5px solid #000;
+      background-color: #fff;
+      position: relative;
+    }
+
+    .xhr_eyes_l::after, .xhr_eyes_r::after {
+      content: "";
+      width: 31px;
+      height: 20px;
+      position: absolute;
+      top: 30px;
+      background-color: #000;
+    }
+
+    .xhr_eyes_l::after {
+      left: -31px;
+      border-top-right-radius: 10px;
+      transform: rotate(20deg);
+    }
+    .xhr_eyes_r::after {
+      right: -31px;
+      border-top-left-radius: 10px;
+      transform: rotate(-20deg);
+    }
+
+    .xhr_l_blak, .xhr_r_blak {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #000;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      animation: blackEye 5s ease-in infinite;
+    }
+
+    .xhr_l_white, .xhr_r_white {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      animation: whiteEye 5s ease-in infinite;
+    }
+
+    /* 嘴巴 */
+    .xhr_mouth {
+      width: 60px;
+      height: 35px;
+      border: 5px solid #000;
+      border-bottom-left-radius: 30px;
+      background-color: #fff;
+      position: absolute;
+      left: 90px;
+      top: 180px;
+      transform: rotate(-30deg);
+    }
+
+    .xhr_mouth::after {
+      content: "";
+      width: 80px;
+      height: 40px;
+      background-color: yellow;
+      border-bottom: 3px solid #000;
+      position: absolute;
+      left: 1px;
+      top: -22px;
+      transform: rotate(30deg);
+    }
+
+    /* 裤子 */
+    .xhr_trousers {
+      width: 250px;
+      height: 150px;
+      position: absolute;
+      top: 250px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .xhr_trousers_t {
+      width: 150px;
+      height: 60px;
+      background-color: blue;
+      border: 5px solid #000;
+      border-bottom: none;
+      z-index: 2;
+      position: relative;
+    }
+
+    .xhr_trousers_b {
+      width: 250px;
+      height: 90px;
+      background-color: blue;
+      position: absolute;
+      top: 60px;
+      border: 5px solid #000;
+    }
+
+    .xhr_l_belt, .xhr_r_belt {
+      width: 80px;
+      height: 20px;
+      background-color: blue;
+      border: 5px solid #000;
+      position: absolute;
+      top: -24px;
+    }
+
+    .xhr_l_belt {
+      left: -67px;
+      transform: rotate(31deg);
+    }
+    .xhr_r_belt {
+      right: -67px;
+      transform: rotate(-31deg);
+    }
+
+    .xhr_l_belt::after, .xhr_r_belt::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #000;
+      position: absolute;
+      top: 6px;
+    }
+
+    .xhr_l_belt::after {
+      left: 63px;
+    }
+    .xhr_r_belt::after {
+      left: 3px;
+    }
+
+    /* 手臂 */
+    .xhr_hand_l,
+    .xhr_hand_r {
+      width: 100px;
+      height: 100px;
+      border: 5px solid #000;
+      border-radius: 30px;
+      position: absolute;
+      top: 300px;
+      z-index: -1;
+      background-color: yellow;
+    }
+
+    .xhr_hand_l {
+      left: 50px;
+      transform: rotateZ(45deg);
+    }
+
+    .xhr_hand_r {
+      right: 50px;
+      transform: rotateZ(-45deg);
+    }
+
+    .xhr_hand_l::after, .xhr_hand_r::after {
+      content: "";
+      width: 30px;
+      height: 10px;
+      border-radius: 5px;
+      background-color: #000;
+      position: absolute;
+      top: 60px;
+    }
+    .xhr_hand_l::after {
+      left: 6px;
+      transform: rotateZ(-90deg);
+    }
+    .xhr_hand_r::after {
+      right: 6px;
+      transform: rotateZ(-90deg);
+    }
+
+    /* 腿脚 */
+    .xhr_foot_l, .xhr_foot_r {
+      width: 40px;
+      height: 70px;
+      background-color: #000;
+      position: absolute;
+      top: 490px;
+      z-index: -1;
+    }
+
+    .xhr_foot_l { left:155px; }
+    .xhr_foot_r { right: 155px; }
+    .xhr_foot_l::after, .xhr_foot_r::after {
+      content: "";
+      width: 60px;
+      height: 40px;
+      border-radius: 20px;
+      position: absolute;
+      background-color: #000;
+      top: 30px;
+    }
+
+    .xhr_foot_l::after {
+      left: -30px;
+    }
+    .xhr_foot_r::after {
+      right: -30px;
+    }
+
+    @keyframes hairAni {
+      10%, 50%, 100% {
+        transform: rotateZ(48deg);
+      }
+
+      35%, 75% {
+        transform: rotateZ(40deg);
+      }
+    }
+
+    @keyframes blackEye {
+      10%, 50%, 100% {
+        transform: translate3d(-50%, -50%, 0);
+      }
+      30% {
+        transform: translate3d(-90%, -50%, 0);;
+      }
+
+      75%  {
+        transform: translate3d(-10%, -50%, 0);
+      }
+    }
+
+    @keyframes whiteEye {
+      10%, 50%, 100% {
+        transform: translate3d(-50%, -50%, 0);
+      }
+      30% {
+        transform: translate3d(-90%, -10%, 0);;
+      }
+
+      75%  {
+        transform: translate3d(-10%, -90%, 0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 小黄人容器 -->
+  <div class="wrap">
+    <!-- 小黄人头发 -->
+    <div class="xhr_hair">
+      <div class="xhr_hair_1"></div>
+      <div class="xhr_hair_2"></div>
+    </div>
+    <!-- 小黄人身体 -->
+    <div class="xhr_body">
+      <!-- 眼睛 -->
+      <div class="xhr_eyes">
+        <!-- 左眼睛 -->
+        <div class="xhr_eyes_l">
+          <div class="xhr_l_blak"></div>
+          <div class="xhr_l_white"></div>
+        </div>
+        <!-- 右眼睛 -->
+        <div class="xhr_eyes_r">
+          <div class="xhr_r_blak"></div>
+          <div class="xhr_r_white"></div>
+        </div>
+      </div>
+      <!-- 嘴巴 -->
+      <div class="xhr_mouth"></div>
+      <!-- 裤子 -->
+      <div class="xhr_trousers">
+        <!-- 裤子的上半部 -->
+        <div class="xhr_trousers_t">
+          <div class="xhr_l_belt"></div>
+          <div class="xhr_r_belt"></div>
+        </div>
+        <!-- 裤子的下半部 -->
+        <div class="xhr_trousers_b"></div>
+      </div>
+    </div>
+    <!-- 小黄人手臂 -->
+    <div class="xhr_hand">
+      <div class="xhr_hand_l"></div>
+      <div class="xhr_hand_r"></div>
+    </div>
+    <!-- 小黄人的腿脚 -->
+    <div class="xhr_foot">
+      <div class="xhr_foot_l"></div>
+      <div class="xhr_foot_r"></div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拖拽</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .drag-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 300px;
+      list-style: none;
+    }
+
+    .drag-wrap .drag-item {
+      width: 200px;
+      height: 200px;
+      margin-right: 20px;
+    }
+
+    .drag-wrap .drag-item:nth-child(1) {
+      border: 1px solid purple;
+    }
+
+    .drag-wrap .drag-item:nth-child(2) {
+      border: 1px solid pink;
+    }
+
+    .drag-wrap .drag-item:nth-child(3) {
+      border: 1px solid lightgreen;
+      margin-right: 0;
+    }
+
+    .drag-wrap .drag-item #p1{
+      width: 100%;
+      height: 20px;
+      background-color: lightpink;
+      text-align: center;
+      cursor: move;
+    }
+
+  </style>
+</head>
+<body>
+  <ul class="drag-wrap">
+    <li class="drag-item">
+      <p id="p1" draggable="true">我是拖动内容1</p>
+      <p id="p2" draggable="true">我是拖动内容2</p>
+      <p id="p3" draggable="true">我是拖动内容3</p>
+      <p id="p4" draggable="true">我是拖动内容4</p>
+    </li>
+    <li class="drag-item" id="target"></li>
+    <li class="drag-item"></li>
+  </ul>
+
+  <script>
+    /* 
+    1.完整的拖拽 + 释放：（7个函数）
+      1.1 找到源对象，设置拖拽效果 draggable="true"
+        ondragstart: 源对象开始被拖动
+        ondrag: 源对象被拖动过程中（被鼠标拖动或未拖动均触发，直到ondragend触发）
+        ondragend：源对象拖动结束
+    */
+    document.ondragstart = (e) => {
+      console.log('源对象开始被拖动')
+      // e.dataTransfer.setData('类型', 数据)
+      // 类型：text/html  URL:路径
+      e.dataTransfer.setData('text/html', e.target.id)
+    }
+    document.ondrag = () => {
+      // console.log('源对象正在拖动过程中')
+    }
+    document.ondragend = () => {
+      console.log('源对象拖动结束')
+    }
+
+    /* 
+      2.1 找到目标对象
+        ondragenter: 源对象进入目标对象
+        ondragover: 源对象在目标对象上方悬停（被鼠标拖动或未拖动均触发，直到ondragleave触发）
+        ondragleave: 源对象离开目标对象上空
+        ondrop：源对象在目标对象上空释放（松手）
+    */
+    document.ondragenter = () => {
+      console.log('源对象进入目标对象')
+    }
+    document.ondragover = (e) => {
+      // console.log('源对象在目标对象上空悬停')
+
+      // 如果想要触发 ondrop事件，需要在 ondragover 里面阻止默认行为： return false / e.preventDefault()
+      e.preventDefault()
+    }
+    document.ondragleave = () => {
+      console.log('源对象离开目标对象, 释放/松开 也会触发')
+    }
+    document.ondrop = (e) => {
+      console.log('源对象被释放/松开')
+      // console.log(e)
+      const id = e.dataTransfer.getData('text/html')
+      e.target.appendChild(document.getElementById(id))
+    }
+  </script>
+</body>
+</html>

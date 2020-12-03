@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta id="viewport" name="viewport"
+    content="width=device-width,viewport-fit=cover,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>吸顶</title>
+  <link rel="stylesheet" href="./common.css">
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <nav class="nav-wrapper clearfix">
+    <h3>连风都不知道</h3>
+    <ul>
+      <li>博客园</li>
+      <li>首页</li>
+      <li>新随笔</li>
+      <li>联系</li>
+      <li>订阅</li>
+      <li>管理</li>
+    </ul>
+  </nav>
+  <header>
+    <div class="name">Kidney</div>
+    <ul class="wrapper-ul">
+      <li>Career(3)</li>
+      <li>Engineering(2)</li>
+      <li>HTML&CSS(4)</li>
+      <li>JavaScript(8)</li>
+      <li>Python(1)</li>
+      <li>View(2)</li>
+    </ul>
+  </header>
+  <section class="content"></section>
+  <script>
+    window.onload = () => {
+      function debounce(fn, delay) {
+        let timer = null; // 定时器
+        return () => {
+          clearTimeout(timer);
+          timer = setTimeout(() => {
+            fn.apply(this);
+          }, 10)
+        }
+      }
+      let dom = document.getElementsByClassName('nav-wrapper')[0]
+      window.onscroll = () => {
+        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        if (scrollTop >= 300) {
+          dom.style.display = 'block'
+        } else {
+          dom.style.display = 'none'
+        }
+      }
+
+    }
+  </script>
+</body>
+
+</html>

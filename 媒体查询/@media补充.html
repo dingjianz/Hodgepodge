@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>@media查询补充</title>
+  <link rel="stylesheet" href="./a.css">
+  <link rel="stylesheet" media="screen and (min-width: 768px)" href="./b.css">
+  <style>
+    /* 
+      < 768 黄色 yellow
+      768 ~ 992 绿色 green
+      992 ~ 1200 紫色 purple
+      > 1200 红色 red
+    */
+
+    @media not screen and (min-width: 768px) and (max-width: 992px) {
+      body {
+        background-color: purple;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+
+</html>
