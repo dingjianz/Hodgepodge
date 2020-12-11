@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sticky position</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .container {
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+    }
+
+    .header,
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .header {
+      height: 60px;
+      background-color: lightblue;
+    }
+
+    .content {
+      min-height: calc(100% - 60px);
+      padding-bottom: 46px;
+      box-sizing: border-box;
+    }
+
+    .content > ul > li {
+      font-size: 20px;
+      line-height: 30px;
+      background: linear-gradient(to bottom, transparent 50%, #FEDC00 50%);
+    }
+
+    .footer {
+      height: 46px;
+      background-color: purple;
+      margin-top: -46px;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="container">
+    <div class="header">
+      header
+    </div>
+    <main class="content">
+      <ul>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+       <!--  <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li>
+        <li>我是li标签</li> -->
+      </ul>
+    </main>
+    
+    <footer class="footer">footer</footer>
+  </section>
+</body>
+
+</html>
