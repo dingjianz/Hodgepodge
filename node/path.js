@@ -2,7 +2,6 @@ const path = require('path');
 
 // __dirname: 路径名称 filename：文件名称
 // console.log(__dirname) // C:\Users\dingjian\Desktop\boringTime\node
-// console.log(__filename) // C:\Users\dingjian\Desktop\boringTime\node\path.js
 
 
 
@@ -78,3 +77,4 @@ const path = require('path');
 // console.log(path.sep) // 路径分隔符（windows是\ linux是/）
 
 console.log(__dirname.split(path.sep)) // [ 'C:', 'Users', 'dingjian', 'Desktop', 'boringTime', 'node' ]
+console.log(process.cwd()) // process.cwd() 方法会返回 Node.js 进程的当前工作目录。
